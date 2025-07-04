@@ -1,0 +1,308 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  background-color: #f5f5f5 !important;
+}
+
+.product-section {
+  margin-bottom: 100px;
+}
+h1 {
+  color: #fff;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+/* Responsive font sizes */
+@media (max-width: 576px) {
+  .product-heading {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .product-heading {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .product-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .product-heading {
+    font-size: 54px;
+  }
+}
+
+/* our products content */
+
+.ourproduct-section {
+  gap: 30px;
+  display: grid;
+  margin-bottom: 100px;
+}
+.heading {
+  text-align: center;
+  margin: 0;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  /* width: 260px;
+    height: 294px; */
+  padding: 15px;
+  align-items: center;
+  display: flex;
+  border-radius: 20px;
+  background: var(--08, #FFF);
+}
+
+.card-img-top {
+  /* width: 230px;
+    height: 230px; */
+  align-self: stretch;
+  margin-bottom: 10px;
+  object-fit: cover;
+  width: 100%;
+  height: 230px;
+  border-radius: 20px;
+  background-color: lightgray;  /* Background color */
+  background-position: 0px -58.333px;
+  background-size: 100% 133.333%;
+  background-repeat: no-repeat;
+}
+.card-img-top img{
+  width: 100%;
+  height: auto;
+}
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.card-title {
+  color: #000000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.view-btn {
+  display: flex;
+  width: 160px;
+  height: 50px;
+  padding: 12px 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 15px;
+  border: none;
+  color: var(--08, #fff);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 55px;
+  }
+
+  /* Product title smaller for very small screens */
+  .card-body h6 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 522px) {
+  .product-section {
+    margin-bottom: 100px;
+  }
+  .heading {
+    font-size: 55px;
+  }
+
+  /* Product title smaller for very small screens */
+  .card-body h6 {
+    font-size: 30px;
+  }
+  .card-img-top{
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-section {
+    margin-bottom: 80px;
+  }
+  .heading {
+    font-size: 50px;
+  }
+  /* Product title smaller for very small screens */
+  .card-body h6 {
+    font-size: 30px;
+  }
+
+  .card-img-top {
+    margin-bottom: 20px;
+
+  }
+
+  .section-title {
+    font-size: 24px;
+    flex-direction: column;
+    gap: 10px;
+    /* width: 530px !important; */
+  }
+  .ourproduct-section{
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 922px) {
+  .product-section {
+    margin-bottom: 50px;
+  }
+  .heading {
+    font-size: 50px;
+  }
+  /* Product title smaller for very small screens */
+  .card-body h6 {
+    font-size: 30px;
+  }
+
+  .card-img-top {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 1200px) {
+
+  .heading {
+    font-size: 40px;
+  }
+  /* Product title smaller for very small screens */
+  .card-body h6 {
+    font-size: 20px;
+  }
+
+  .card-img-top {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 367px) {
+  .section-title {
+    font-size: 24px;
+    flex-direction: column;
+    gap: 10px;
+    width: 320px !important;
+  }
+}
+
+@media (max-width: 622px) {
+  .section-title {
+    font-size: 24px;
+    flex-direction: column;
+    gap: 10px;
+    /* width: 530px !important; */
+  }
+  .leatherimg {
+    width: 356px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+/* services content */
+
+.service-section {
+  padding: 20px 30px;
+  border-radius: 20px !important;
+  background-color: #e3e5ff !important;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.product-services {
+  margin-top: 100px;
+  margin-bottom: 84px;
+}
+
+.num-text {
+  color: var(--05, #000330);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+}
+
+.num-text h5 {
+  margin: 0;
+}
+.text-content {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  color: var(--06, #666);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Responsive font sizes for mobile and tablets */
+@media (max-width: 767px) {
+    .num-text {
+      font-size: 20px;  /* Smaller on mobile */
+    }
+  
+    .text-content {
+      font-size: 14px;  /* Slightly smaller on mobile */
+    }
+  }
+  .product-services{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.footer-content {
+
+    margin-top: 50px;
+}
+  
+  @media (min-width: 768px) and (max-width: 1200px) {
+    .num-text {
+      font-size: 24px;  /* Medium size on tablets */
+    }
+  
+    .text-content {
+      font-size: 15px;
+    }
+
+    .product-services{
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+  }

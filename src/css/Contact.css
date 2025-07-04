@@ -1,0 +1,285 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  background-color: #f5f5f5 !important;
+}
+
+/* contact us */
+.contact-section {
+  margin-bottom: 100px;
+}
+.contactus {
+  color: #fff;
+  text-align: center;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+}
+
+
+/* Responsive font sizes */
+@media (max-width: 576px) {
+  .contactus-heading {
+    font-size: 30px;
+  }
+  .contact-section {
+    margin-bottom: 50px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .contactus-heading {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .contactus-heading {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 1201px) {
+  .contactus-heading {
+    font-size: 54px;
+  }
+}
+
+/* get in touch */
+.get-in-touch-content {
+  margin-bottom: 100px;
+}
+
+.get-in-touch {
+  width: 230px;
+  /* text-align: center; */
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  gap: 30px;
+}
+
+.Contact-detail {
+  color: var(--05, #000330);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  display: grid;
+  gap: 15px;
+}
+
+.form-control {
+  color: var(--06, #666);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.Bcontactus {
+  color: var(--08, #fff);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  /* width: 145px; */
+  /* height: 50px; */
+  display: flex;
+  padding: 12px 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  border: none;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+}
+.vertical-line {
+  width: 2px;
+  height: 238px;
+  background: #666;
+}
+
+.support {
+  width: 130px;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+}
+
+.address {
+  color: var(--05, #000330);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 145.455% */
+  margin-bottom: 30px;
+}
+
+svg {
+  width: 26px;
+  height: 26px;
+  aspect-ratio: 1/1;
+  margin-top: 0;
+}
+
+.icons {
+  background-color: #000330;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.icon {
+  align-items: center;
+  text-align: center;
+}
+
+.locaicon{
+  width: 95px;
+  height: 30px;
+  margin-top: 0px;
+  margin-bottom: 95px;
+}
+/* For extra small devices (phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .support {
+    font-size: 24px;
+    margin: 30px 0 15px 0;
+  }
+  .get-in-touch {
+    font-size: 24px;
+  }
+  .address {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+  }
+
+  .form-control {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .Bcontactus {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+  .Contact-detail {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .icons {
+    width: 25px;
+    height: 25px;
+  }
+  svg {
+    width: 15px;
+    height: 15px;
+  }
+  .get-in-touch-content {
+    margin-bottom: 50px;
+  }
+}
+
+/* For small devices (portrait tablets and large phones: 576px - 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .get-in-touch,
+  .support {
+    font-size: 28px;
+    margin: 25px 15px;
+  }
+
+  .address {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 15px;
+  }
+
+  .form-control {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+
+  .Bcontactus {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+}
+
+/* For medium devices (tablets: 769px - 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  .get-in-touch,
+  .support {
+    font-size: 30px;
+  }
+
+  .address {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .Bcontactus {
+    font-size: 19px;
+    padding: 12px 18px;
+  }
+
+  .vertical-line {
+    display: none;
+  }
+}
+
+/* For large devices (desktops: 993px and up) */
+@media (max-width: 1200px) {
+  .get-in-touch,
+  .support {
+    font-size: 34px;
+  }
+
+  .address {
+    font-size: 19px ;
+    line-height: 32px;
+  }
+
+  .form-control {
+    font-size: 16px;
+    padding: 14px 18px;
+  }
+
+  .Bcontactus {
+    font-size: 20px;
+    padding: 14px 20px;
+  }
+}
+

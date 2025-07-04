@@ -1,0 +1,294 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+  background-color: #f5f5f5 !important;
+}
+
+.team-banner {
+  background-size: cover;
+  background-position: center;
+}
+
+.team-title {
+  color: #fff;
+  text-align: center;
+  font-size: 54px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+}
+
+.team-card {
+  transform: translateY(-55%);
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: var(--08, #fff);
+}
+
+.team-text {
+  color: var(--05, #000330);
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px; /* 166.667% */
+}
+
+/* Responsive media queries */
+@media (max-width: 1200px) {
+  .team-title {
+    font-size: 42px;
+  }
+  .team-text {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .team-card {
+    padding: 25px;
+    transform: translateY(-40%);
+  }
+}
+
+@media (max-width: 992px) {
+  .team-title {
+    font-size: 36px;
+  }
+  .team-text {
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .team-card {
+    padding: 20px;
+    transform: translateY(-35%);
+  }
+}
+
+@media (max-width: 768px) {
+  .team-title {
+    font-size: 28px;
+  }
+  .team-text {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 500;
+  }
+  .team-card {
+    padding: 15px;
+    transform: translateY(-30%);
+  }
+}
+
+@media (max-width: 576px) {
+  .team-title {
+    font-size: 22px;
+  }
+  .team-text {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 500;
+  }
+  .team-card {
+    padding: 10px;
+    transform: translateY(-25%);
+  }
+}
+
+@media (max-width: 400px) {
+  .team-title {
+    font-size: 15px;
+  }
+  .team-text {
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .team-card {
+    padding: 8px;
+    transform: translateY(-25%);
+  }
+}
+
+/* our founder  */
+
+.founder-heading {
+  text-align: center;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background: var(--01, linear-gradient(135deg, #252fcc 1.5%, #2ae071 85.71%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 40px;
+}
+
+.Fheading1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 22px 0 0;
+}
+
+.Fwork {
+  color: var(--06, #666);
+
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.Fname {
+  color: var(--05, #000330);
+
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 30px; /* 107.143% */
+}
+
+.ftext {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  align-self: stretch;
+}
+
+.ftext p {
+  color: var(--06, #666);
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 34px; /* 170% */
+}
+
+.fimage {
+  padding: 0;
+}
+
+.Fheading2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 0 0 0 22px;
+}
+
+.mb-100 {
+  margin-bottom: 100px;
+}
+
+/* Extra small: up to 400px */
+@media (max-width: 400px) {
+  .founder-heading {
+    font-size: 20px;
+  }
+  .Fwork,
+  .Fname {
+    font-size: 18px;
+  }
+  .ftext p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .Fheading1,
+  .Fheading2 {
+    gap: 8px;
+  }
+  .mb-100 {
+    margin-bottom: 40px;
+  }
+  .fdetails {
+    padding: 0 10px;
+  }
+}
+
+/* Small phones: 401px to 575px */
+@media (min-width: 401px) and (max-width: 575px) {
+  .founder-heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .Fwork,
+  .Fname {
+    font-size: 20px;
+  }
+  .ftext p {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .Fheading1,
+  .Fheading2 {
+    gap: 10px;
+  }
+  .mb-100 {
+    margin-bottom: 50px;
+  }
+}
+/* Default (already defined by you) */  
+  
+  /* Small devices (up to 767px) */
+  @media (min-width: 576px) and (max-width: 768px) {
+    .founder-heading {
+      font-size: 24px;
+      margin: 20px 0 20px 0;
+    }
+    .Fwork, .Fname {
+      font-size: 18px;
+      line-height: 28px;
+      margin: 0;
+    }
+    .ftext p {
+      font-size: 14px !important;
+      line-height: 26px;
+      font-weight: 300;
+    }
+    .Fheading1, .Fheading2 {
+      gap: 10px;
+      padding: 10px 10px;
+    }
+    .mb-100 {
+      margin-bottom: 50px; /* reduce space on mobile */
+    }
+    .fdetails{
+      padding: 10px;
+    }
+    .ftext{
+      gap: 10px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .founder-heading {
+      font-size: 26px;
+      margin: 20px 0 20px 0;
+    }
+    .Fwork, .Fname {
+      font-size: 18px;
+      line-height: 28px;
+      margin: 0;
+    }
+    .ftext p {
+      font-size: 15px;
+      line-height: 28px;
+      font-weight: 300;
+    }
+    .Fheading1, .Fheading2 {
+      gap: 10px;
+      padding: 10px 10px;
+    }
+    .mb-100 {
+      margin-bottom: 50px; /* reduce space on mobile */
+    }
+    .fdetails{
+      padding: 10px;
+    }
+  }
+  
