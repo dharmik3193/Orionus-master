@@ -124,6 +124,11 @@ function Footer() {
                     Leather Business Bags
                   </a>
                 </li>
+                <li>
+                  <a href="/products" className="footer-link">
+                    Indian Spices
+                  </a>
+                </li>
               </ul>
             </div>
 

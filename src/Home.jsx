@@ -160,7 +160,7 @@ function Home() {
               </h2>
               <div className="text">
                 <p className="about-text">
-                  A Government of India Recognized Leather Goods Manufacturer &
+                  A Government of India Recognized Leather Goods & Spicess & Spices Manufacturer &
                   Export House.
                 </p>
                 <p className="about-text">
@@ -280,7 +280,7 @@ function Home() {
       </div>
 
       {/* 
-Custom Leather Goods Manufacturing Services */}
+Custom Leather Goods & Spicess & Spices Manufacturing Services */}
 
       <div className="good-services-content">
         <div className="row align-items-center">
@@ -296,12 +296,12 @@ Custom Leather Goods Manufacturing Services */}
           {/* Content Column */}
           <div className="col-md-8 good-leathers">
             <h2 className="fw-bold good-leather-title">
-              <span>Custom Leather Good Manufacturing Services</span>
+              <span>Leather Goods & Spices Manufacturing Services</span>
             </h2>
             <div className="good-leather-text text-secondary">
               <p>
                 As a trusted trader, manufacturer, and exporter of premium
-                leather goods, we specialize in crafting high-quality wholesale
+                Leather Goods & Spicess & Spices, we specialize in crafting high-quality wholesale
                 and private-label leather products. Our commitment to excellence
                 ensures that every piece reflects superior craftsmanship and
                 attention to detail.
@@ -310,7 +310,7 @@ Custom Leather Goods Manufacturing Services */}
               <p>
                 With a meticulous quality control system in place, we guarantee
                 consistency across our entire production process. This
-                dedication to precision allows us to deliver leather goods that
+                dedication to precision allows us to deliver Leather Goods & Spicess & Spices that
                 not only meet international standards but also enhance our
                 clients' brands. Whether it's handbags, wallets, belts, or
                 accessories, we create products that customers can cherish with
@@ -422,7 +422,7 @@ Custom Leather Goods Manufacturing Services */}
                   <p className="text-muted">
                     If you have a leather product design, upload it with all the
                     details and select the type. Upon receiving the quote, we
-                    will get in touch with leather goods industries to price
+                    will get in touch with Leather Goods & Spicess & Spices industries to price
                     your demand according to your specifications.
                   </p>
                 </div>
