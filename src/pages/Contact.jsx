@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState, useEffect } from "react";
 import contactus from "../assests/image7.png";
 import Header from "../Header";
@@ -11,9 +11,13 @@ import {
   FaInstagram,
   FaCloudUploadAlt,
 } from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 function Contact() {
-  
+  const formRef = useRef();
+  const inquiryRef = useRef();
+  const fileRef = useRef();
+
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -27,33 +31,26 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formRef.current);
 
-    try {
-      const response = await fetch("http://localhost:5000/send-inquiry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+    emailjs
+      .sendForm(
+        'service_8ai2gtj',     // e.g., service_123abc
+        'template_rn5uykp',    // e.g., template_456xyz
+        formRef.current || inquiryRef.current || fileRef.current,
+        'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
         },
-        body: JSON.stringify(formData),
-      });
+        (error) => {
+          console.log(error);
+          alert('Failed to send message.');
+        }
+      );
 
-      const responseData = await response.json();
-
-      if (response.ok) {
-        alert("Your inquiry has been submitted successfully!");
-        setFormData({
-          fullName: "",
-          email: "",
-          product: "",
-          query: "",
-        });
-      } else {
-        alert("Failed to send inquiry. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error submitting inquiry:", error);
-      alert("An error occurred. Please try again.");
-    }
   };
 
   // quatation form
@@ -86,13 +83,14 @@ function Contact() {
             {/* Get in Touch Form */}
             <div className="col-lg-7 contact-form">
               <h3 className="get-in-touch fw-bold">Get In Touch</h3>
-              <form>
+              <form ref={formRef} onSubmit={handleSubmit}>
                 <div className="row mb-4">
                   <div className=" Contact-detail col-md-6 mb-3 mb-md-0">
                     First Name
                     <input
                       type="text"
                       className="form-control"
+                      name="fname"
                       placeholder="Enter Your First Name"
                     />
                   </div>
@@ -101,6 +99,7 @@ function Contact() {
                     <input
                       type="text"
                       className="form-control"
+                      name="lname"
                       placeholder="Enter Your Last Name"
                     />
                   </div>
@@ -110,6 +109,7 @@ function Contact() {
                     Email Address
                     <input
                       type="email"
+                      name="email"
                       className="form-control"
                       placeholder="Enter Your Email Address"
                     />
@@ -119,6 +119,7 @@ function Contact() {
                     <input
                       type="text"
                       className="form-control"
+                      name="mobile"
                       placeholder="Enter Your Phone Number"
                     />
                   </div>
@@ -128,11 +129,12 @@ function Contact() {
                   <textarea
                     className="form-control"
                     rows="4"
+                    name="message"
                     placeholder="Write a Message"
                   ></textarea>
                 </div>
 
-                <button className="Bcontactus mt-2 ">Contact Us</button>
+                <button className="Bcontactus mt-2 " onClick={handleSubmit}>Contact Us</button>
               </form>
             </div>
 
@@ -216,7 +218,7 @@ function Contact() {
                       </clipPath>
                     </defs>
                   </svg>
-                   info@exportorionus.com
+                  info@exportorionus.com
                 </li>
                 <li className="address d-flex align-items-center">
                   <svg
@@ -263,89 +265,89 @@ function Contact() {
 
       {/* inquiry content */}
       <div className="container">
-      <div className="enquiry-form">
-        <div className="text-center enquiry-title">
-          <h2>Inquiry Now</h2>
-          <p className="text-center enquiry-description">
-            We will send you the product details as soon as we receive your
-            query. Please select the product from the list and <br />
-            send us your query. Please contact us so we can fulfill your
-            requirements.
-          </p>
+        <div className="enquiry-form">
+          <div className="text-center enquiry-title">
+            <h2>Inquiry Now</h2>
+            <p className="text-center enquiry-description">
+              We will send you the product details as soon as we receive your
+              query. Please select the product from the list and <br />
+              send us your query. Please contact us so we can fulfill your
+              requirements.
+            </p>
+          </div>
+          <form ref={inquiryRef} onSubmit={handleSubmit}>
+            <div className="row">
+              {/* Full Name */}
+              <div className="col-md-4">
+                <label className="form-label">Full Name</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  className="form-control"
+                  placeholder="Enter Your Full Name"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Email Address */}
+              <div className="col-md-4">
+                <label className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control"
+                  placeholder="Enter Your Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Product Selection */}
+              <div className="col-md-4">
+                <label className="form-label">Product</label>
+                <select
+                  name="product"
+                  className="form-select"
+                  value={formData.product}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Product</option>
+                  <option value="Leather Bag">Leather Bag</option>
+                  <option value="Wallet">Wallet</option>
+                  <option value="Belt">Belt</option>
+                  <option value="Accessories">Accessories</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Query Text Area */}
+            <div className="mt-3">
+              <label className="form-label">Write Query</label>
+              <textarea
+                name="query"
+                className="form-control"
+                placeholder="Write Your Query Here"
+                rows="4"
+                value={formData.query}
+                onChange={handleChange}
+                required
+              ></textarea>
+            </div>
+
+            {/* Submit Button */}
+            <div className="text-center mt-4">
+              <button type="submit" className="enquiry-btn">
+                Send Inquiry
+              </button>
+            </div>
+          </form>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            {/* Full Name */}
-            <div className="col-md-4">
-              <label className="form-label">Full Name</label>
-              <input
-                type="text"
-                name="fullName"
-                className="form-control"
-                placeholder="Enter Your Full Name"
-                value={formData.fullName}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            {/* Email Address */}
-            <div className="col-md-4">
-              <label className="form-label">Email Address</label>
-              <input
-                type="email"
-                name="email"
-                className="form-control"
-                placeholder="Enter Your Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            {/* Product Selection */}
-            <div className="col-md-4">
-              <label className="form-label">Product</label>
-              <select
-                name="product"
-                className="form-select"
-                value={formData.product}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select Product</option>
-                <option value="Leather Bag">Leather Bag</option>
-                <option value="Wallet">Wallet</option>
-                <option value="Belt">Belt</option>
-                <option value="Accessories">Accessories</option>
-              </select>
-            </div>
-          </div>
-
-          {/* Query Text Area */}
-          <div className="mt-3">
-            <label className="form-label">Write Query</label>
-            <textarea
-              name="query"
-              className="form-control"
-              placeholder="Write Your Query Here"
-              rows="4"
-              value={formData.query}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-
-          {/* Submit Button */}
-          <div className="text-center mt-4">
-            <button type="submit" className="enquiry-btn">
-              Send Inquiry
-            </button>
-          </div>
-        </form>
       </div>
-    </div>
-    
+
       {/* quatation content */}
       {/* quatation content */}
       <div className="container">
@@ -369,7 +371,7 @@ function Contact() {
               {/* Right Side - Form Section */}
               <div className="col-md-7">
                 <div className="form-section">
-                  <form>
+                  <form ref={fileRef} onSubmit={handleSubmit}>
                     <div className="row mb-4">
                       <div className="col-md-6">
                         <label className="form-label">Full Name</label>
@@ -377,6 +379,7 @@ function Contact() {
                           type="text"
                           className="form-controls"
                           placeholder="Enter your full name"
+                          name="fullName"
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
                         />
@@ -386,6 +389,7 @@ function Contact() {
                         <select
                           className="form-selects"
                           value={productType}
+                          name="product"
                           onChange={(e) => setProductType(e.target.value)}
                         >
                           <option>Select Product Type</option>
@@ -405,6 +409,7 @@ function Contact() {
                           type="file"
                           hidden
                           id="fileUpload"
+                          name="file"
                           onChange={handleFileChange}
                         />
                         <label htmlFor="fileUpload" className="d-block">
@@ -422,13 +427,13 @@ function Contact() {
                         )}
                       </div>
                     </div>
+                    {/* Submit Button */}
+                    <div className="text-center">
+                      <button type="submit" className="quotation-btn">
+                        Get Quotation
+                      </button>
+                    </div>
                   </form>
-                  {/* Submit Button */}
-                  <div className="text-center">
-                    <button type="submit" className="quotation-btn">
-                      Get Quotation
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>
