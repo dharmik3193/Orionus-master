@@ -417,7 +417,7 @@ function Contact() {
               {/* Right Side - Form Section */}
               <div className="col-md-7">
                 <div className="form-section">
-                  <form ref={fileRef} onSubmit={handleSubmit}>
+                  <form ref={fileRef} onSubmit={handleQuote}>
                     <div className="row mb-4">
                       <div className="col-md-6">
                         <label className="form-label">Full Name</label>
