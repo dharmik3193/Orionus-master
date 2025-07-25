@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -9,9 +9,10 @@ import aboutImg3 from "./assests/Rectangle 3.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import leatherImage from "./assests/Rectangle 11.jpg";
 import { FaCloudUploadAlt } from "react-icons/fa";
-// import { Carousel } from "react-responsive-carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
+import imageCompression from 'browser-image-compression';
 // best seller
 const products = [
   { names: "Laptop Bag", image: "/images/laptop bag.webp" },
@@ -22,6 +23,9 @@ const products = [
 
 // inquiry form
 function Home() {
+  const inquiryRef = useRef();
+  const quoteRef = useRef();
+  const [compressedBase64, setCompressedBase64] = useState('');
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -33,11 +37,52 @@ function Home() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleInquiry = (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Your inquiry has been submitted!");
-  };
+    emailjs
+      .sendForm(
+        'service_8ai2gtj',     // e.g., service_123abc
+        'template_rn5uykp',    // e.g., template_456xyz
+        inquiryRef.current,
+        'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+        },
+        (error) => {
+          console.log(error);
+          alert('Failed to send message.');
+        }
+      );
+  }
+
+  const handleQuote = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        'service_8ai2gtj',     // e.g., service_123abc
+        'template_rn5uykp',    // e.g., template_456xyz
+        {
+          fullName: e.target.fullName.value,
+          product: e.target.product.value,
+          // attachment: compressedBase64, // Send base64 string
+        },
+        'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+        },
+        (error) => {
+          console.log(error);
+          alert('Failed to send message.');
+        }
+      );
+  }
+
 
   // quatation form
   const [fullName, setFullName] = useState("");
@@ -45,8 +90,27 @@ function Home() {
   const [file, setFile] = useState(null);
 
   // Handle file upload
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+  const handleFileChange = async (e) => {
+    setFile(e.target.files[0])
+    const file = e.target.files[0];
+    if (!file) return;
+    try {
+      // Compress the image
+      const options = {
+        maxSizeMB: 0.03, // 0.05 MB = 50KB
+        maxWidthOrHeight: 800,
+        useWebWorker: true,
+      };
+
+      const compressedFile = await imageCompression(file, options);
+
+      // Convert to Base64
+      const base64 = await imageCompression.getDataUrlFromFile(compressedFile);
+      setCompressedBase64(base64); // Save it for email
+    } catch (error) {
+      console.error('Compression error:', error);
+      alert('Failed to compress image.');
+    }
   };
 
   const [itemsPerSlide, setItemsPerSlide] = useState(4);
@@ -98,7 +162,7 @@ function Home() {
                 <p>Crafting Timeless Elegance in Leather</p>
               </div>
               <div className="hero">
-                <button className="learn">Learn More</button>
+                <Link to={'/about'}><button className="learn">Learn More</button></Link>
               </div>
             </div>
           </Carousel.Item>
@@ -117,7 +181,7 @@ function Home() {
                 </p>
               </div>
               <div className="hero">
-                <button className="learn">Learn More</button>
+                <Link to={'/products'}><button className="learn">Learn More</button></Link>
               </div>
             </div>
           </Carousel.Item>
@@ -137,7 +201,7 @@ function Home() {
                 </p>
               </div>
               <div className="her">
-                <button className="learn">Learn More</button>
+                <Link to={'/products'}><button className="learn">Learn More</button></Link>
               </div>
             </div>
           </Carousel.Item>
@@ -160,7 +224,7 @@ function Home() {
               </h2>
               <div className="text">
                 <p className="about-text">
-                  A Government of India Recognized Leather Goods & Spicess & Spices Manufacturer &
+                  A Government of India Recognized Leather Goods & Spices Manufacturer &
                   Export House.
                 </p>
                 <p className="about-text">
@@ -301,7 +365,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
             <div className="good-leather-text text-secondary">
               <p>
                 As a trusted trader, manufacturer, and exporter of premium
-                Leather Goods & Spicess & Spices, we specialize in crafting high-quality wholesale
+                Leather Goods & Spices, we specialize in crafting high-quality wholesale
                 and private-label leather products. Our commitment to excellence
                 ensures that every piece reflects superior craftsmanship and
                 attention to detail.
@@ -310,7 +374,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
               <p>
                 With a meticulous quality control system in place, we guarantee
                 consistency across our entire production process. This
-                dedication to precision allows us to deliver Leather Goods & Spicess & Spices that
+                dedication to precision allows us to deliver Leather Goods & Spices that
                 not only meet international standards but also enhance our
                 clients' brands. Whether it's handbags, wallets, belts, or
                 accessories, we create products that customers can cherish with
@@ -336,7 +400,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
               requirements.
             </p>
           </div>
-          <form onSubmit={handleSubmit}>
+          <form ref={inquiryRef} onSubmit={handleInquiry}>
             <div className="row">
               {/* Full Name */}
               <div className="col-md-4 col-sm-6 col-12 mb-3">
@@ -422,7 +486,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
                   <p className="text-muted">
                     If you have a leather product design, upload it with all the
                     details and select the type. Upon receiving the quote, we
-                    will get in touch with Leather Goods & Spicess & Spices industries to price
+                    will get in touch with Leather Goods & Spices industries to price
                     your demand according to your specifications.
                   </p>
                 </div>
@@ -431,7 +495,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
               {/* Right Side - Form Section */}
               <div className="col-md-7">
                 <div className="form-section">
-                  <form>
+                  <form ref={quoteRef} onSubmit={handleQuote}>
                     <div className="row mb-4">
                       <div className="col-md-6">
                         <label className="form-label">Full Name</label>
@@ -439,6 +503,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
                           type="text"
                           className="form-controls"
                           placeholder="Enter your full name"
+                          name="fullName"
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
                         />
@@ -447,6 +512,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
                         <label className="form-label">Product Type</label>
                         <select
                           className="form-selects"
+                          name="product"
                           value={productType}
                           onChange={(e) => setProductType(e.target.value)}
                         >
@@ -467,6 +533,7 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
                           type="file"
                           hidden
                           id="fileUpload"
+                          name="upload"
                           onChange={handleFileChange}
                         />
                         <label htmlFor="fileUpload" className="d-block">
@@ -484,13 +551,13 @@ Custom Leather Goods & Spicess & Spices Manufacturing Services */}
                         )}
                       </div>
                     </div>
+                    <div className="text-center">
+                      <button type="submit" className="quotation-btn">
+                        Get Quotation
+                      </button>
+                    </div>
                   </form>
                   {/* Submit Button */}
-                  <div className="text-center">
-                    <button type="submit" className="quotation-btn">
-                      Get Quotation
-                    </button>
-                  </div>
                 </div>
               </div>
             </div>

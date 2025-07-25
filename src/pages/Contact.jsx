@@ -29,6 +29,52 @@ function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleInquiry = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        'service_8ai2gtj',     // e.g., service_123abc
+        'template_rn5uykp',    // e.g., template_456xyz
+        inquiryRef.current,
+        'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+        },
+        (error) => {
+          console.log(error);
+          alert('Failed to send message.');
+        }
+      );
+  }
+
+  const handleQuote = (e) => {
+    e.preventDefault();
+    emailjs
+      .send(
+        'service_8ai2gtj',     // e.g., service_123abc
+        'template_rn5uykp',    // e.g., template_456xyz
+        {
+          fullName: e.target.fullName.value,
+          product: e.target.product.value,
+          // attachment: compressedBase64, // Send base64 string
+        },
+        'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          alert('Message sent successfully!');
+        },
+        (error) => {
+          console.log(error);
+          alert('Failed to send message.');
+        }
+      );
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formRef.current);
@@ -36,8 +82,8 @@ function Contact() {
     emailjs
       .sendForm(
         'service_8ai2gtj',     // e.g., service_123abc
-        'template_rn5uykp',    // e.g., template_456xyz
-        formRef.current || inquiryRef.current || fileRef.current,
+        'template_2d2ml2e',    // e.g., template_456xyz
+        formRef.current || fileRef.current,
         'E3AFSHjVGXKT057U8'      // e.g., xyzPublicKey
       )
       .then(
@@ -275,7 +321,7 @@ function Contact() {
               requirements.
             </p>
           </div>
-          <form ref={inquiryRef} onSubmit={handleSubmit}>
+          <form ref={inquiryRef} onSubmit={handleInquiry}>
             <div className="row">
               {/* Full Name */}
               <div className="col-md-4">
